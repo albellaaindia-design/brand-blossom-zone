@@ -36,12 +36,33 @@ function ServicesPage() {
               </div>
               <p className="mt-2 text-muted-foreground max-w-2xl">{cat.tagline}</p>
               <ul className="mt-6 grid sm:grid-cols-2 gap-3">
-                {cat.items.map((item) => (
-                  <li key={item} className="flex items-start gap-3 rounded-xl border border-border bg-surface/40 px-4 py-3">
-                    <Check className="size-4 mt-0.5 text-primary shrink-0" />
-                    <span className="text-sm">{item}</span>
-                  </li>
-                ))}
+                {cat.items.map((item) => {
+                  const slug = SERVICE_NAME_TO_SLUG[item];
+                  const content = (
+                    <>
+                      <Check className="size-4 mt-0.5 text-primary shrink-0" />
+                      <span className="text-sm flex-1">{item}</span>
+                      {slug && <ArrowRight className="size-4 text-primary opacity-0 group-hover:opacity-100 transition-opacity" />}
+                    </>
+                  );
+                  return (
+                    <li key={item}>
+                      {slug ? (
+                        <Link
+                          to="/services/$slug"
+                          params={{ slug }}
+                          className="group flex items-start gap-3 rounded-xl border border-border bg-surface/40 px-4 py-3 hover:border-primary/60 transition-colors"
+                        >
+                          {content}
+                        </Link>
+                      ) : (
+                        <div className="flex items-start gap-3 rounded-xl border border-border bg-surface/40 px-4 py-3">
+                          {content}
+                        </div>
+                      )}
+                    </li>
+                  );
+                })}
               </ul>
               <div className="mt-6">
                 <a
