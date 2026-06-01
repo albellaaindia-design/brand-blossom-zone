@@ -1,9 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHero } from "@/components/PageHero";
 import { CTASection } from "@/components/CTASection";
 import { QuickInquiryForm } from "@/components/QuickInquiryForm";
-import { SERVICE_CATEGORIES } from "@/lib/site-data";
-import { Check } from "lucide-react";
+import { SERVICE_CATEGORIES, SERVICE_NAME_TO_SLUG } from "@/lib/site-data";
+import { ArrowRight, Check } from "lucide-react";
 
 export const Route = createFileRoute("/services")({
   head: () => ({
