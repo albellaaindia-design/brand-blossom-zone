@@ -22,6 +22,7 @@ import { Route as CareerRouteImport } from './routes/career'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
+import { Route as IndustriesSlugRouteImport } from './routes/industries.$slug'
 
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
@@ -88,6 +89,11 @@ const ServicesSlugRoute = ServicesSlugRouteImport.update({
   path: '/$slug',
   getParentRoute: () => ServicesRoute,
 } as any)
+const IndustriesSlugRoute = IndustriesSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => IndustriesRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -96,12 +102,13 @@ export interface FileRoutesByFullPath {
   '/case-study': typeof CaseStudyRoute
   '/contact': typeof ContactRoute
   '/disclaimer': typeof DisclaimerRoute
-  '/industries': typeof IndustriesRoute
+  '/industries': typeof IndustriesRouteWithChildren
   '/privacy': typeof PrivacyRoute
   '/refund-policy': typeof RefundPolicyRoute
   '/services': typeof ServicesRouteWithChildren
   '/shipping-policy': typeof ShippingPolicyRoute
   '/terms': typeof TermsRoute
+  '/industries/$slug': typeof IndustriesSlugRoute
   '/services/$slug': typeof ServicesSlugRoute
 }
 export interface FileRoutesByTo {
@@ -111,12 +118,13 @@ export interface FileRoutesByTo {
   '/case-study': typeof CaseStudyRoute
   '/contact': typeof ContactRoute
   '/disclaimer': typeof DisclaimerRoute
-  '/industries': typeof IndustriesRoute
+  '/industries': typeof IndustriesRouteWithChildren
   '/privacy': typeof PrivacyRoute
   '/refund-policy': typeof RefundPolicyRoute
   '/services': typeof ServicesRouteWithChildren
   '/shipping-policy': typeof ShippingPolicyRoute
   '/terms': typeof TermsRoute
+  '/industries/$slug': typeof IndustriesSlugRoute
   '/services/$slug': typeof ServicesSlugRoute
 }
 export interface FileRoutesById {
@@ -127,12 +135,13 @@ export interface FileRoutesById {
   '/case-study': typeof CaseStudyRoute
   '/contact': typeof ContactRoute
   '/disclaimer': typeof DisclaimerRoute
-  '/industries': typeof IndustriesRoute
+  '/industries': typeof IndustriesRouteWithChildren
   '/privacy': typeof PrivacyRoute
   '/refund-policy': typeof RefundPolicyRoute
   '/services': typeof ServicesRouteWithChildren
   '/shipping-policy': typeof ShippingPolicyRoute
   '/terms': typeof TermsRoute
+  '/industries/$slug': typeof IndustriesSlugRoute
   '/services/$slug': typeof ServicesSlugRoute
 }
 export interface FileRouteTypes {
@@ -150,6 +159,7 @@ export interface FileRouteTypes {
     | '/services'
     | '/shipping-policy'
     | '/terms'
+    | '/industries/$slug'
     | '/services/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -165,6 +175,7 @@ export interface FileRouteTypes {
     | '/services'
     | '/shipping-policy'
     | '/terms'
+    | '/industries/$slug'
     | '/services/$slug'
   id:
     | '__root__'
@@ -180,6 +191,7 @@ export interface FileRouteTypes {
     | '/services'
     | '/shipping-policy'
     | '/terms'
+    | '/industries/$slug'
     | '/services/$slug'
   fileRoutesById: FileRoutesById
 }
@@ -190,7 +202,7 @@ export interface RootRouteChildren {
   CaseStudyRoute: typeof CaseStudyRoute
   ContactRoute: typeof ContactRoute
   DisclaimerRoute: typeof DisclaimerRoute
-  IndustriesRoute: typeof IndustriesRoute
+  IndustriesRoute: typeof IndustriesRouteWithChildren
   PrivacyRoute: typeof PrivacyRoute
   RefundPolicyRoute: typeof RefundPolicyRoute
   ServicesRoute: typeof ServicesRouteWithChildren
@@ -291,8 +303,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesSlugRouteImport
       parentRoute: typeof ServicesRoute
     }
+    '/industries/$slug': {
+      id: '/industries/$slug'
+      path: '/$slug'
+      fullPath: '/industries/$slug'
+      preLoaderRoute: typeof IndustriesSlugRouteImport
+      parentRoute: typeof IndustriesRoute
+    }
   }
 }
+
+interface IndustriesRouteChildren {
+  IndustriesSlugRoute: typeof IndustriesSlugRoute
+}
+
+const IndustriesRouteChildren: IndustriesRouteChildren = {
+  IndustriesSlugRoute: IndustriesSlugRoute,
+}
+
+const IndustriesRouteWithChildren = IndustriesRoute._addFileChildren(
+  IndustriesRouteChildren,
+)
 
 interface ServicesRouteChildren {
   ServicesSlugRoute: typeof ServicesSlugRoute
@@ -313,7 +344,7 @@ const rootRouteChildren: RootRouteChildren = {
   CaseStudyRoute: CaseStudyRoute,
   ContactRoute: ContactRoute,
   DisclaimerRoute: DisclaimerRoute,
-  IndustriesRoute: IndustriesRoute,
+  IndustriesRoute: IndustriesRouteWithChildren,
   PrivacyRoute: PrivacyRoute,
   RefundPolicyRoute: RefundPolicyRoute,
   ServicesRoute: ServicesRouteWithChildren,
@@ -323,3 +354,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
