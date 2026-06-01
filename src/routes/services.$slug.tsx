@@ -70,7 +70,7 @@ function ServiceDetailPage() {
           <div>
             <h2 className="text-2xl font-bold">What you get</h2>
             <ul className="mt-5 grid sm:grid-cols-2 gap-3">
-              {detail.highlights.map((h) => (
+              {detail.highlights.map((h: string) => (
                 <li key={h} className="flex items-start gap-3 rounded-xl border border-border bg-surface/40 px-4 py-3">
                   <Check className="size-4 mt-0.5 text-primary shrink-0" />
                   <span className="text-sm">{h}</span>
