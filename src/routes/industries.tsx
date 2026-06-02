@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { CTASection } from "@/components/CTASection";
 import { INDUSTRY_DETAILS } from "@/lib/site-data";
+import { INDUSTRY_IMAGES, IMAGES } from "@/lib/category-images";
 
 export const Route = createFileRoute("/industries")({
   head: () => ({
