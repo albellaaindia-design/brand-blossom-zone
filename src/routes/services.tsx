@@ -31,6 +31,16 @@ function ServicesPage() {
         <div className="space-y-16">
           {SERVICE_CATEGORIES.map((cat) => (
             <article key={cat.slug} id={cat.slug} className="scroll-mt-24">
+              <div className="rounded-3xl overflow-hidden border border-border mb-6">
+                <img
+                  src={CATEGORY_IMAGES[cat.slug] ?? IMAGES.dashboard}
+                  alt={`${cat.title} services`}
+                  loading="lazy"
+                  width={1280}
+                  height={420}
+                  className="w-full h-[180px] md:h-[240px] object-cover"
+                />
+              </div>
               <div className="flex items-baseline justify-between flex-wrap gap-3">
                 <h2 className="text-3xl md:text-4xl font-bold">{cat.title}</h2>
                 <span className="text-xs uppercase tracking-[0.2em] text-primary">{cat.items.length} services</span>
