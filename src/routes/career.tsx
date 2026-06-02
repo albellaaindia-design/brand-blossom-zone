@@ -3,6 +3,7 @@ import { PageHero } from "@/components/PageHero";
 import { CTASection } from "@/components/CTASection";
 import { Mail, MapPin } from "lucide-react";
 import { SITE } from "@/lib/site-data";
+import { IMAGES } from "@/lib/category-images";
 
 const OPENINGS = [
   { role: "Performance Marketing Specialist", type: "Full-time · Navi Mumbai / Remote", years: "2-5 yrs" },
