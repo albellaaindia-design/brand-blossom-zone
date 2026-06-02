@@ -3,6 +3,10 @@ import { ArrowRight, BarChart3, Globe2, Sparkles, Target, Zap, Award } from "luc
 import { QuickInquiryForm } from "@/components/QuickInquiryForm";
 import { SERVICE_CATEGORIES, COUNTRIES, INDUSTRIES } from "@/lib/site-data";
 import { CTASection } from "@/components/CTASection";
+import dashboardImg from "@/assets/hero-dashboard.jpg";
+import teamImg from "@/assets/team-collab.jpg";
+import aiImg from "@/assets/ai-network.jpg";
+import mapImg from "@/assets/global-map.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
