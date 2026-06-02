@@ -64,6 +64,13 @@ function CasesPage() {
         description="A selection of recent client engagements across performance marketing, SEO, websites and Zoho implementation."
       />
 
+      <section className="container-pad pt-10">
+        <div className="relative rounded-3xl overflow-hidden border border-border">
+          <img src={IMAGES.dashboard} alt="Client outcomes dashboard" loading="lazy" width={1280} height={896} className="w-full h-[240px] md:h-[360px] object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
+        </div>
+      </section>
+
       <section className="container-pad py-16 grid gap-6 md:grid-cols-2">
         {CASES.map((c) => (
           <article key={c.client} className="rounded-2xl border border-border bg-surface/60 p-6 hover:border-primary/60 transition-colors">
