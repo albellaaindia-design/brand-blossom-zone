@@ -4,6 +4,7 @@ import { PageHero } from "@/components/PageHero";
 import { CTASection } from "@/components/CTASection";
 import { QuickInquiryForm } from "@/components/QuickInquiryForm";
 import { SERVICE_DETAILS_BY_SLUG, SERVICE_DETAILS } from "@/lib/site-data";
+import { CATEGORY_IMAGES, IMAGES } from "@/lib/category-images";
 
 export const Route = createFileRoute("/services/$slug")({
   loader: ({ params }) => {
