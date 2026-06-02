@@ -3,6 +3,7 @@ import { PageHero } from "@/components/PageHero";
 import { QuickInquiryForm } from "@/components/QuickInquiryForm";
 import { SITE } from "@/lib/site-data";
 import { Mail, MapPin, Phone } from "lucide-react";
+import { IMAGES } from "@/lib/category-images";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
