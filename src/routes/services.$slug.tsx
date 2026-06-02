@@ -4,6 +4,7 @@ import { PageHero } from "@/components/PageHero";
 import { CTASection } from "@/components/CTASection";
 import { QuickInquiryForm } from "@/components/QuickInquiryForm";
 import { SERVICE_DETAILS_BY_SLUG, SERVICE_DETAILS } from "@/lib/site-data";
+import { CATEGORY_IMAGES, IMAGES } from "@/lib/category-images";
 
 export const Route = createFileRoute("/services/$slug")({
   loader: ({ params }) => {
@@ -54,6 +55,19 @@ function ServiceDetailPage() {
         title={<>{detail.name.split(" ").slice(0, -1).join(" ")} <span className="text-gradient-brand">{detail.name.split(" ").slice(-1)}</span></>}
         description={detail.tagline}
       />
+
+      <section className="container-pad pt-10">
+        <div className="rounded-3xl overflow-hidden border border-border">
+          <img
+            src={CATEGORY_IMAGES[detail.categorySlug] ?? IMAGES.dashboard}
+            alt={`${detail.name} visual`}
+            loading="lazy"
+            width={1280}
+            height={500}
+            className="w-full h-[220px] md:h-[360px] object-cover"
+          />
+        </div>
+      </section>
 
       <section className="container-pad py-14 grid gap-12 lg:grid-cols-[1fr_400px] items-start">
         <article className="space-y-10">

@@ -4,6 +4,7 @@ import { PageHero } from "@/components/PageHero";
 import { CTASection } from "@/components/CTASection";
 import { QuickInquiryForm } from "@/components/QuickInquiryForm";
 import { INDUSTRY_DETAILS_BY_SLUG, INDUSTRY_DETAILS } from "@/lib/site-data";
+import { INDUSTRY_IMAGES, IMAGES } from "@/lib/category-images";
 
 export const Route = createFileRoute("/industries/$slug")({
   loader: ({ params }) => {
@@ -50,6 +51,19 @@ function IndustryDetailPage() {
         title={<><span className="text-gradient-brand">{detail.name}</span> marketing.</>}
         description={detail.tagline}
       />
+
+      <section className="container-pad pt-10">
+        <div className="rounded-3xl overflow-hidden border border-border">
+          <img
+            src={INDUSTRY_IMAGES[detail.slug] ?? IMAGES.team}
+            alt={`${detail.name} marketing`}
+            loading="lazy"
+            width={1280}
+            height={500}
+            className="w-full h-[220px] md:h-[360px] object-cover"
+          />
+        </div>
+      </section>
 
       <section className="container-pad py-14 grid gap-12 lg:grid-cols-[1fr_400px] items-start">
         <article className="space-y-10">

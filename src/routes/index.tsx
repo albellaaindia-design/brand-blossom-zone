@@ -3,6 +3,10 @@ import { ArrowRight, BarChart3, Globe2, Sparkles, Target, Zap, Award } from "luc
 import { QuickInquiryForm } from "@/components/QuickInquiryForm";
 import { SERVICE_CATEGORIES, COUNTRIES, INDUSTRIES } from "@/lib/site-data";
 import { CTASection } from "@/components/CTASection";
+import dashboardImg from "@/assets/hero-dashboard.jpg";
+import teamImg from "@/assets/team-collab.jpg";
+import aiImg from "@/assets/ai-network.jpg";
+import mapImg from "@/assets/global-map.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -127,10 +131,39 @@ function HomePage() {
         </div>
       </section>
 
+      {/* Visual band — dashboard */}
+      <section className="container-pad pb-8">
+        <div className="relative overflow-hidden rounded-3xl border border-border">
+          <img
+            src={dashboardImg}
+            alt="Analytics dashboard showing campaign performance and growth"
+            loading="lazy"
+            width={1280}
+            height={896}
+            className="w-full h-[280px] md:h-[420px] object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+          <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
+            <h3 className="text-2xl md:text-4xl font-bold max-w-2xl">Dashboards, attribution & honest reporting — from day one.</h3>
+            <p className="mt-2 text-sm md:text-base text-muted-foreground max-w-xl">Track what matters: pipeline, CAC, LTV and ROAS. Not vanity metrics.</p>
+          </div>
+        </div>
+      </section>
+
       {/* Why us */}
       <section className="container-pad py-20 border-t border-border">
-        <div className="grid gap-12 lg:grid-cols-2 items-start">
-          <div>
+        <div className="grid gap-12 lg:grid-cols-2 items-center">
+          <div className="relative rounded-3xl overflow-hidden border border-border order-2 lg:order-1">
+            <img
+              src={teamImg}
+              alt="Rank Advertising team collaborating in the studio"
+              loading="lazy"
+              width={1280}
+              height={896}
+              className="w-full h-[320px] md:h-[440px] object-cover"
+            />
+          </div>
+          <div className="order-1 lg:order-2">
             <span className="text-xs font-semibold tracking-[0.25em] text-primary uppercase">Why Rank</span>
             <h2 className="mt-3 text-3xl md:text-5xl font-bold">A partner — not a vendor.</h2>
             <p className="mt-4 text-muted-foreground max-w-lg">
@@ -138,37 +171,71 @@ function HomePage() {
               applied-AI experts to every account. Lean teams. Tight feedback loops.
               Transparent reporting.
             </p>
+            <div className="mt-6 grid sm:grid-cols-2 gap-4">
+              {WHY.map((w) => (
+                <div key={w.title} className="rounded-2xl border border-border bg-surface/60 p-5">
+                  <w.icon className="size-6 text-primary" />
+                  <h3 className="mt-3 font-semibold">{w.title}</h3>
+                  <p className="mt-1 text-sm text-muted-foreground">{w.text}</p>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="grid sm:grid-cols-2 gap-4">
-            {WHY.map((w) => (
-              <div key={w.title} className="rounded-2xl border border-border bg-surface/60 p-5">
-                <w.icon className="size-6 text-primary" />
-                <h3 className="mt-3 font-semibold">{w.title}</h3>
-                <p className="mt-1 text-sm text-muted-foreground">{w.text}</p>
-              </div>
-            ))}
+        </div>
+      </section>
+
+      {/* Global reach */}
+      <section className="container-pad pb-8">
+        <div className="relative overflow-hidden rounded-3xl border border-border">
+          <img
+            src={mapImg}
+            alt="Global reach across India, USA, UK, UAE, Australia and beyond"
+            loading="lazy"
+            width={1280}
+            height={720}
+            className="w-full h-[260px] md:h-[380px] object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/30 to-transparent" />
+          <div className="absolute inset-0 flex items-center p-6 md:p-12">
+            <div className="max-w-xl">
+              <span className="text-xs font-semibold tracking-[0.25em] text-primary uppercase">Global reach</span>
+              <h3 className="mt-3 text-2xl md:text-4xl font-bold">Shipped from Navi Mumbai. Trusted in 10+ countries.</h3>
+              <p className="mt-3 text-sm md:text-base text-muted-foreground">India · USA · Canada · Australia · UAE · UK · Singapore · Germany · Saudi Arabia · and more.</p>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Industries */}
-      <section className="container-pad py-20 border-t border-border">
-        <div className="flex flex-wrap items-end justify-between gap-4">
-          <div>
-            <span className="text-xs font-semibold tracking-[0.25em] text-primary uppercase">Industries</span>
-            <h2 className="mt-3 text-3xl md:text-5xl font-bold">Deep playbooks across verticals.</h2>
-          </div>
-          <Link to="/industries" className="text-sm font-semibold text-primary inline-flex items-center gap-1">
-            All industries <ArrowRight className="size-4" />
-          </Link>
-        </div>
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {INDUSTRIES.slice(0, 6).map((i) => (
-            <div key={i.name} className="rounded-2xl border border-border p-5 bg-surface/40">
-              <h3 className="font-semibold">{i.name}</h3>
-              <p className="mt-1 text-sm text-muted-foreground">{i.description}</p>
+      <section className="relative border-t border-border">
+        <img
+          src={aiImg}
+          alt=""
+          aria-hidden
+          loading="lazy"
+          width={1280}
+          height={896}
+          className="absolute inset-0 w-full h-full object-cover opacity-20"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/70 to-background" />
+        <div className="relative container-pad py-20">
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <span className="text-xs font-semibold tracking-[0.25em] text-primary uppercase">Industries</span>
+              <h2 className="mt-3 text-3xl md:text-5xl font-bold">Deep playbooks across verticals.</h2>
             </div>
-          ))}
+            <Link to="/industries" className="text-sm font-semibold text-primary inline-flex items-center gap-1">
+              All industries <ArrowRight className="size-4" />
+            </Link>
+          </div>
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {INDUSTRIES.slice(0, 6).map((i) => (
+              <div key={i.name} className="rounded-2xl border border-border p-5 bg-surface/60 backdrop-blur">
+                <h3 className="font-semibold">{i.name}</h3>
+                <p className="mt-1 text-sm text-muted-foreground">{i.description}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

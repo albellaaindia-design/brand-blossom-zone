@@ -3,6 +3,7 @@ import { PageHero } from "@/components/PageHero";
 import { CTASection } from "@/components/CTASection";
 import { Mail, MapPin } from "lucide-react";
 import { SITE } from "@/lib/site-data";
+import { IMAGES } from "@/lib/category-images";
 
 const OPENINGS = [
   { role: "Performance Marketing Specialist", type: "Full-time · Navi Mumbai / Remote", years: "2-5 yrs" },
@@ -33,6 +34,12 @@ function CareerPage() {
         title={<>Build the work you'll be <span className="text-gradient-brand">proud</span> of.</>}
         description="We hire senior talent and treat juniors like future leads. Flat structure. Real ownership. Global clients."
       />
+
+      <section className="container-pad pt-10">
+        <div className="rounded-3xl overflow-hidden border border-border">
+          <img src={IMAGES.team} alt="The Rank Advertising team at work" loading="lazy" width={1280} height={896} className="w-full h-[260px] md:h-[380px] object-cover" />
+        </div>
+      </section>
 
       <section className="container-pad py-16">
         <h2 className="text-3xl md:text-4xl font-bold">Open roles</h2>

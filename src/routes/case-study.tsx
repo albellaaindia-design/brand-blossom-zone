@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageHero } from "@/components/PageHero";
 import { CTASection } from "@/components/CTASection";
 import { TrendingUp } from "lucide-react";
+import { IMAGES } from "@/lib/category-images";
 
 const CASES = [
   {
@@ -62,6 +63,13 @@ function CasesPage() {
         title={<>Outcomes, not <span className="text-gradient-brand">opinions</span>.</>}
         description="A selection of recent client engagements across performance marketing, SEO, websites and Zoho implementation."
       />
+
+      <section className="container-pad pt-10">
+        <div className="relative rounded-3xl overflow-hidden border border-border">
+          <img src={IMAGES.dashboard} alt="Client outcomes dashboard" loading="lazy" width={1280} height={896} className="w-full h-[240px] md:h-[360px] object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
+        </div>
+      </section>
 
       <section className="container-pad py-16 grid gap-6 md:grid-cols-2">
         {CASES.map((c) => (
