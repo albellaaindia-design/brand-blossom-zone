@@ -131,6 +131,25 @@ function HomePage() {
         </div>
       </section>
 
+      {/* Visual band — dashboard */}
+      <section className="container-pad pb-8">
+        <div className="relative overflow-hidden rounded-3xl border border-border">
+          <img
+            src={dashboardImg}
+            alt="Analytics dashboard showing campaign performance and growth"
+            loading="lazy"
+            width={1280}
+            height={896}
+            className="w-full h-[280px] md:h-[420px] object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+          <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
+            <h3 className="text-2xl md:text-4xl font-bold max-w-2xl">Dashboards, attribution & honest reporting — from day one.</h3>
+            <p className="mt-2 text-sm md:text-base text-muted-foreground max-w-xl">Track what matters: pipeline, CAC, LTV and ROAS. Not vanity metrics.</p>
+          </div>
+        </div>
+      </section>
+
       {/* Why us */}
       <section className="container-pad py-20 border-t border-border">
         <div className="grid gap-12 lg:grid-cols-2 items-start">
