@@ -35,6 +35,12 @@ function CareerPage() {
         description="We hire senior talent and treat juniors like future leads. Flat structure. Real ownership. Global clients."
       />
 
+      <section className="container-pad pt-10">
+        <div className="rounded-3xl overflow-hidden border border-border">
+          <img src={IMAGES.team} alt="The Rank Advertising team at work" loading="lazy" width={1280} height={896} className="w-full h-[260px] md:h-[380px] object-cover" />
+        </div>
+      </section>
+
       <section className="container-pad py-16">
         <h2 className="text-3xl md:text-4xl font-bold">Open roles</h2>
         <div className="mt-8 grid gap-4">
