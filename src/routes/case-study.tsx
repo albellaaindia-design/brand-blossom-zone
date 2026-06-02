@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageHero } from "@/components/PageHero";
 import { CTASection } from "@/components/CTASection";
 import { TrendingUp } from "lucide-react";
+import { IMAGES } from "@/lib/category-images";
 
 const CASES = [
   {
