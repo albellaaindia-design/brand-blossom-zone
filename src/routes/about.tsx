@@ -3,6 +3,8 @@ import { PageHero } from "@/components/PageHero";
 import { CTASection } from "@/components/CTASection";
 import { COUNTRIES } from "@/lib/site-data";
 import { CheckCircle2 } from "lucide-react";
+import teamImg from "@/assets/team-collab.jpg";
+import mapImg from "@/assets/global-map.jpg";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
