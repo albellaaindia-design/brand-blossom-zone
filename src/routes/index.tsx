@@ -152,8 +152,18 @@ function HomePage() {
 
       {/* Why us */}
       <section className="container-pad py-20 border-t border-border">
-        <div className="grid gap-12 lg:grid-cols-2 items-start">
-          <div>
+        <div className="grid gap-12 lg:grid-cols-2 items-center">
+          <div className="relative rounded-3xl overflow-hidden border border-border order-2 lg:order-1">
+            <img
+              src={teamImg}
+              alt="Rank Advertising team collaborating in the studio"
+              loading="lazy"
+              width={1280}
+              height={896}
+              className="w-full h-[320px] md:h-[440px] object-cover"
+            />
+          </div>
+          <div className="order-1 lg:order-2">
             <span className="text-xs font-semibold tracking-[0.25em] text-primary uppercase">Why Rank</span>
             <h2 className="mt-3 text-3xl md:text-5xl font-bold">A partner — not a vendor.</h2>
             <p className="mt-4 text-muted-foreground max-w-lg">
@@ -161,15 +171,37 @@ function HomePage() {
               applied-AI experts to every account. Lean teams. Tight feedback loops.
               Transparent reporting.
             </p>
+            <div className="mt-6 grid sm:grid-cols-2 gap-4">
+              {WHY.map((w) => (
+                <div key={w.title} className="rounded-2xl border border-border bg-surface/60 p-5">
+                  <w.icon className="size-6 text-primary" />
+                  <h3 className="mt-3 font-semibold">{w.title}</h3>
+                  <p className="mt-1 text-sm text-muted-foreground">{w.text}</p>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="grid sm:grid-cols-2 gap-4">
-            {WHY.map((w) => (
-              <div key={w.title} className="rounded-2xl border border-border bg-surface/60 p-5">
-                <w.icon className="size-6 text-primary" />
-                <h3 className="mt-3 font-semibold">{w.title}</h3>
-                <p className="mt-1 text-sm text-muted-foreground">{w.text}</p>
-              </div>
-            ))}
+        </div>
+      </section>
+
+      {/* Global reach */}
+      <section className="container-pad pb-8">
+        <div className="relative overflow-hidden rounded-3xl border border-border">
+          <img
+            src={mapImg}
+            alt="Global reach across India, USA, UK, UAE, Australia and beyond"
+            loading="lazy"
+            width={1280}
+            height={720}
+            className="w-full h-[260px] md:h-[380px] object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/30 to-transparent" />
+          <div className="absolute inset-0 flex items-center p-6 md:p-12">
+            <div className="max-w-xl">
+              <span className="text-xs font-semibold tracking-[0.25em] text-primary uppercase">Global reach</span>
+              <h3 className="mt-3 text-2xl md:text-4xl font-bold">Shipped from Navi Mumbai. Trusted in 10+ countries.</h3>
+              <p className="mt-3 text-sm md:text-base text-muted-foreground">India · USA · Canada · Australia · UAE · UK · Singapore · Germany · Saudi Arabia · and more.</p>
+            </div>
           </div>
         </div>
       </section>
