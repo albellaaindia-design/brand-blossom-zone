@@ -52,6 +52,19 @@ function IndustryDetailPage() {
         description={detail.tagline}
       />
 
+      <section className="container-pad pt-10">
+        <div className="rounded-3xl overflow-hidden border border-border">
+          <img
+            src={INDUSTRY_IMAGES[detail.slug] ?? IMAGES.team}
+            alt={`${detail.name} marketing`}
+            loading="lazy"
+            width={1280}
+            height={500}
+            className="w-full h-[220px] md:h-[360px] object-cover"
+          />
+        </div>
+      </section>
+
       <section className="container-pad py-14 grid gap-12 lg:grid-cols-[1fr_400px] items-start">
         <article className="space-y-10">
           <Link to="/industries" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary">
