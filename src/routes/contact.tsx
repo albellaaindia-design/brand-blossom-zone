@@ -25,6 +25,13 @@ function ContactPage() {
         title={<>Let's get the <span className="text-gradient-brand">conversation</span> started.</>}
         description="Tell us about your goals and we'll come back with ideas, examples and a clear next step."
       />
+      <section className="container-pad pt-10">
+        <div className="rounded-3xl overflow-hidden border border-border relative">
+          <img src={IMAGES.map} alt="Global contact" loading="lazy" width={1280} height={720} className="w-full h-[200px] md:h-[300px] object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background/80 to-transparent" />
+        </div>
+      </section>
+
       <section className="container-pad py-16 grid gap-10 lg:grid-cols-[1fr_1.2fr] items-start">
         <div className="space-y-6">
           <div className="rounded-2xl border border-border bg-surface/40 p-6">
