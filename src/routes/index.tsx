@@ -207,23 +207,35 @@ function HomePage() {
       </section>
 
       {/* Industries */}
-      <section className="container-pad py-20 border-t border-border">
-        <div className="flex flex-wrap items-end justify-between gap-4">
-          <div>
-            <span className="text-xs font-semibold tracking-[0.25em] text-primary uppercase">Industries</span>
-            <h2 className="mt-3 text-3xl md:text-5xl font-bold">Deep playbooks across verticals.</h2>
-          </div>
-          <Link to="/industries" className="text-sm font-semibold text-primary inline-flex items-center gap-1">
-            All industries <ArrowRight className="size-4" />
-          </Link>
-        </div>
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {INDUSTRIES.slice(0, 6).map((i) => (
-            <div key={i.name} className="rounded-2xl border border-border p-5 bg-surface/40">
-              <h3 className="font-semibold">{i.name}</h3>
-              <p className="mt-1 text-sm text-muted-foreground">{i.description}</p>
+      <section className="relative border-t border-border">
+        <img
+          src={aiImg}
+          alt=""
+          aria-hidden
+          loading="lazy"
+          width={1280}
+          height={896}
+          className="absolute inset-0 w-full h-full object-cover opacity-20"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/70 to-background" />
+        <div className="relative container-pad py-20">
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <span className="text-xs font-semibold tracking-[0.25em] text-primary uppercase">Industries</span>
+              <h2 className="mt-3 text-3xl md:text-5xl font-bold">Deep playbooks across verticals.</h2>
             </div>
-          ))}
+            <Link to="/industries" className="text-sm font-semibold text-primary inline-flex items-center gap-1">
+              All industries <ArrowRight className="size-4" />
+            </Link>
+          </div>
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {INDUSTRIES.slice(0, 6).map((i) => (
+              <div key={i.name} className="rounded-2xl border border-border p-5 bg-surface/60 backdrop-blur">
+                <h3 className="font-semibold">{i.name}</h3>
+                <p className="mt-1 text-sm text-muted-foreground">{i.description}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
