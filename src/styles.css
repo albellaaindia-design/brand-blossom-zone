@@ -6,7 +6,8 @@
 
 @theme inline {
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-display: 'Space Grotesk', 'Inter', sans-serif;
+  --font-display: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -36,53 +37,58 @@
   --color-ring: var(--ring);
   --color-surface: var(--surface);
   --color-surface-foreground: var(--surface-foreground);
+  --color-terminal: var(--terminal);
+  --color-terminal-dim: var(--terminal-dim);
 }
 
 :root {
-  --radius: 0.5rem;
+  --radius: 0.25rem;
 
-  /* Brand: deep black + cyan/teal terminal accent (teamorq-style) */
-  --background: oklch(0.13 0.005 240);
-  --foreground: oklch(0.96 0.005 200);
+  /* teamorq-inspired: near-black bg, cyan accent, terminal green */
+  --background: oklch(0.10 0.004 240);
+  --foreground: oklch(0.94 0.005 200);
 
-  --surface: oklch(0.17 0.008 240);
-  --surface-foreground: oklch(0.96 0.005 200);
+  --surface: oklch(0.13 0.006 240);
+  --surface-foreground: oklch(0.94 0.005 200);
 
-  --card: oklch(0.17 0.008 240);
-  --card-foreground: oklch(0.96 0.005 200);
-  --popover: oklch(0.17 0.008 240);
-  --popover-foreground: oklch(0.96 0.005 200);
+  --card: oklch(0.13 0.006 240);
+  --card-foreground: oklch(0.94 0.005 200);
+  --popover: oklch(0.13 0.006 240);
+  --popover-foreground: oklch(0.94 0.005 200);
 
-  --primary: oklch(0.82 0.13 195);          /* cyan / teal */
-  --primary-foreground: oklch(0.13 0.005 240);
-  --primary-glow: oklch(0.88 0.12 175);     /* mint glow */
+  --primary: oklch(0.82 0.13 195);          /* cyan */
+  --primary-foreground: oklch(0.10 0.004 240);
+  --primary-glow: oklch(0.88 0.12 175);
 
-  --secondary: oklch(0.22 0.01 240);
-  --secondary-foreground: oklch(0.96 0.005 200);
+  --secondary: oklch(0.20 0.008 240);
+  --secondary-foreground: oklch(0.94 0.005 200);
 
-  --muted: oklch(0.22 0.01 240);
-  --muted-foreground: oklch(0.7 0.015 220);
+  --muted: oklch(0.20 0.008 240);
+  --muted-foreground: oklch(0.62 0.012 220);
 
   --accent: oklch(0.82 0.13 195);
-  --accent-foreground: oklch(0.13 0.005 240);
+  --accent-foreground: oklch(0.10 0.004 240);
 
   --destructive: oklch(0.62 0.22 25);
   --destructive-foreground: oklch(0.98 0 0);
 
-  --border: oklch(1 0 0 / 8%);
+  --border: oklch(1 0 0 / 7%);
   --input: oklch(1 0 0 / 10%);
   --ring: oklch(0.82 0.13 195);
 
+  /* terminal palette */
+  --terminal: oklch(0.85 0.18 150);          /* fresh green "ok" */
+  --terminal-dim: oklch(0.55 0.05 200);      /* dim cyan-grey */
+
   --gradient-brand: linear-gradient(135deg, oklch(0.78 0.13 200), oklch(0.88 0.12 175));
-  --gradient-bars: linear-gradient(180deg, oklch(0.13 0.005 240) 0%, oklch(0.5 0.12 195) 70%, oklch(0.88 0.12 175) 100%);
+  --gradient-bars: linear-gradient(180deg, oklch(0.10 0.004 240) 0%, oklch(0.5 0.12 195) 70%, oklch(0.88 0.12 175) 100%);
   --shadow-glow: 0 20px 60px -20px oklch(0.82 0.13 195 / 0.45);
   --shadow-card: 0 8px 30px -10px oklch(0 0 0 / 0.7);
 }
 
 .dark {
-  --background: oklch(0.13 0.005 240);
-  --foreground: oklch(0.96 0.005 200);
-
+  --background: oklch(0.10 0.004 240);
+  --foreground: oklch(0.94 0.005 200);
 }
 
 @layer base {
@@ -96,7 +102,7 @@
   }
   h1, h2, h3, h4 {
     font-family: var(--font-display);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.025em;
   }
 }
 
@@ -112,4 +118,33 @@
   .shadow-glow { box-shadow: var(--shadow-glow); }
   .shadow-card-dark { box-shadow: var(--shadow-card); }
   .container-pad { @apply mx-auto w-full max-w-7xl px-5 md:px-8; }
+  .font-mono { font-family: var(--font-mono); }
+  .text-terminal { color: var(--color-terminal); }
+  .text-terminal-dim { color: var(--color-terminal-dim); }
+
+  /* subtle grid backdrop */
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, oklch(1 0 0 / 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, oklch(1 0 0 / 0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  .marquee {
+    animation: marquee 60s linear infinite;
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  .blink::after {
+    content: "▍";
+    margin-left: 2px;
+    animation: blink 1s steps(1) infinite;
+    color: var(--color-terminal);
+  }
+  @keyframes blink {
+    50% { opacity: 0; }
+  }
 }
