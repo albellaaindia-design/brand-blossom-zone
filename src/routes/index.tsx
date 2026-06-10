@@ -29,7 +29,7 @@ function HomePage() {
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "radial-gradient(900px 500px at 85% 15%, oklch(0.7 0.22 40 / 0.35), transparent 60%), radial-gradient(700px 400px at 10% 85%, oklch(0.55 0.22 30 / 0.2), transparent 60%)",
+              "radial-gradient(900px 500px at 85% 15%, oklch(0.82 0.13 195 / 0.28), transparent 60%), radial-gradient(700px 400px at 10% 85%, oklch(0.7 0.13 175 / 0.2), transparent 60%)",
           }}
         />
         {/* peakpilots-style bar gradient on the right */}
