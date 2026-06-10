@@ -13,7 +13,7 @@ export function PageHero({ eyebrow, title, description }: Props) {
         className="absolute inset-0 opacity-60 pointer-events-none"
         style={{
           background:
-            "radial-gradient(800px 400px at 80% 20%, oklch(0.7 0.22 40 / 0.25), transparent 60%), radial-gradient(600px 300px at 10% 80%, oklch(0.55 0.22 30 / 0.18), transparent 60%)",
+            "radial-gradient(800px 400px at 80% 20%, oklch(0.82 0.13 195 / 0.22), transparent 60%), radial-gradient(600px 300px at 10% 80%, oklch(0.7 0.13 175 / 0.18), transparent 60%)",
         }}
       />
       <div className="relative container-pad py-20 md:py-28">
